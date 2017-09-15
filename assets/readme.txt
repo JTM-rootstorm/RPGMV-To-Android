@@ -1,0 +1,1 @@
+Place your game's 'www' folder here
