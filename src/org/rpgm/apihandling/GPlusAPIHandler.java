@@ -1,12 +1,9 @@
 package org.rpgm.apihandling;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.gms.games.Games;
 import com.google.example.games.basegameutils.BaseGameActivity;
-
-import org.rpgm.main.MainActivity;
 
 public class GPlusAPIHandler extends BaseGameActivity {
     private boolean signedIn = false;
@@ -14,7 +11,6 @@ public class GPlusAPIHandler extends BaseGameActivity {
     @Override
     public void onCreate(Bundle savedInstance){
         super.onCreate(savedInstance);
-        startGame();
     }
 
     @Override
@@ -25,11 +21,6 @@ public class GPlusAPIHandler extends BaseGameActivity {
     @Override
     public void onSignInFailed(){
         signedIn = false;
-    }
-
-    private void startGame(){
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
     }
 
     @android.webkit.JavascriptInterface

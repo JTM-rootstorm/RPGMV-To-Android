@@ -20,6 +20,7 @@
 package org.rpgm.main;
 
 import android.app.ActionBar;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
@@ -51,6 +52,7 @@ public class MainActivity extends CordovaActivity {
         WebView webView = (WebView)appView.getEngine().getView();
 
         enterFullscreen();
+        initGPlusAPI();
 
         ContentExposure contentExposure = new ContentExposure();
         contentExposure.setStorageManager(this.getSystemService(STORAGE_SERVICE));
@@ -99,5 +101,11 @@ public class MainActivity extends CordovaActivity {
         if(!isFullscreen) return;
 
         setSystemUiVisibilityChangeListener();
+    }
+
+    private void initGPlusAPI(){
+        Intent intent = new Intent(this, GPlusAPIHandler.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+        startActivity(intent);
     }
 }
