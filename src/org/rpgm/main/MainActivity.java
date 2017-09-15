@@ -50,14 +50,16 @@ public class MainActivity extends CordovaActivity {
         }
 
         WebView webView = (WebView)appView.getEngine().getView();
+        setContentView(webView);
 
-        enterFullscreen();
-        initGPlusAPI();
+        setIsFullscreen(true);
 
         ContentExposure contentExposure = new ContentExposure();
         contentExposure.setStorageManager(this.getSystemService(STORAGE_SERVICE));
 
         GPlusAPIHandler gPlusAPIHandler = new GPlusAPIHandler();
+
+        //initGPlusAPI();
 
         webView.addJavascriptInterface(contentExposure, "exposureInterface");
         webView.addJavascriptInterface(gPlusAPIHandler, "gameInterface");

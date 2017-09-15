@@ -6,7 +6,7 @@ import com.google.android.gms.games.Games;
 import com.google.example.games.basegameutils.BaseGameActivity;
 
 public class GPlusAPIHandler extends BaseGameActivity {
-    private boolean signedIn = false;
+    private static boolean signedIn = false;
 
     @Override
     public void onCreate(Bundle savedInstance){

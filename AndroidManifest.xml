@@ -28,7 +28,7 @@
             android:screenOrientation="sensorLandscape"
             android:label="@string/activity_name"
             android:launchMode="singleTop"
-            android:name="org.rpgm.main.MainActivity"
+            android:name=".MainActivity"
             android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen"
             android:windowSoftInputMode="adjustResize">
             <intent-filter android:label="@string/launcher_name">
