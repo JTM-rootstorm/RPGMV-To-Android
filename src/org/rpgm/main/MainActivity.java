@@ -60,7 +60,7 @@ public class MainActivity extends CordovaActivity {
         contentExposure.setStorageManager(this.getSystemService(STORAGE_SERVICE));
 
         webView.addJavascriptInterface(contentExposure, "exposureInterface");
-        webView.addJavascriptInterface(new GPlusAPIHandler(), "gameInterface");
+        webView.addJavascriptInterface(new GPlusAPIHandler(gPlusAPIActivity), "gameInterface");
 
         // Set by <content src="index.html" /> in config.xml
         //loadUrl(launchUrl);
@@ -103,11 +103,7 @@ public class MainActivity extends CordovaActivity {
         setSystemUiVisibilityChangeListener();
     }
 
-    public static void setAPIActivity(GPlusAPIActivity gactivity){
-        gPlusAPIActivity = gactivity;
-    }
-
-    public static GPlusAPIActivity getgPlusAPIActivity(){
-        return gPlusAPIActivity;
+    public static void setAPIClient(GPlusAPIActivity gActivity){
+        gPlusAPIActivity = gActivity;
     }
 }

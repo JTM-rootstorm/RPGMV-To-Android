@@ -1,13 +1,15 @@
 package org.rpgm.apihandling;
 
-import org.rpgm.main.MainActivity;
-
 public class GPlusAPIHandler {
+
+    private GPlusAPIActivity gPlusAPIActivity;
+
+    public GPlusAPIHandler(GPlusAPIActivity apiClient){
+        gPlusAPIActivity = apiClient;
+    }
 
     @android.webkit.JavascriptInterface
     public void showAchievementWindow(){
-        if(MainActivity.getgPlusAPIActivity() != null){
-            MainActivity.getgPlusAPIActivity().showAchievementWindow();
-        }
+        gPlusAPIActivity.showAchievementWindow();
     }
 }

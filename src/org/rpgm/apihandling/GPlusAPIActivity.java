@@ -12,8 +12,10 @@ public class GPlusAPIActivity extends BaseGameActivity {
 
     @Override
     public void onCreate(Bundle savedInstance){
-        super.onCreate(savedInstance);
         getGameHelper().setConnectOnStart(true);
+        super.onCreate(savedInstance);
+
+        MainActivity.setAPIClient(this);
         startGame();
     }
 
@@ -27,15 +29,14 @@ public class GPlusAPIActivity extends BaseGameActivity {
 
     }
 
+    private void startGame(){
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
     public void showAchievementWindow(){
         if(isSignedIn()){
             startActivityForResult(Games.Achievements.getAchievementsIntent(getApiClient()), 1);
         }
-    }
-
-    private void startGame(){
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
-        MainActivity.setAPIActivity(this);
     }
 }
