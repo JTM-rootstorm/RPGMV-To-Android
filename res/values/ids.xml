@@ -13,9 +13,12 @@
 -->
 <resources>
     <!-- TODO: Replace this by your app's app ID! -->
-    <string name="app_id">CHANGE</string>
+    <string name="app_id" translatable="false">USER_CHANGE</string>
+
+    <!-- Should be the same package name you have in AndroidManifest.xml -->
+    <string name="package_name" translatable="false">org.rpgm.main</string>
 
     <!-- TODO: Replace these by your achievement/leaderboard IDs! -->
-
+    <string name="SOME_ACHIEVEMENT" translatable="false">SOME_ACHIEVEMENT_ID</string>
 
 </resources>

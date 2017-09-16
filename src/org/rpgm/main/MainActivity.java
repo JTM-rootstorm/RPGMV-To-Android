@@ -20,13 +20,13 @@
 package org.rpgm.main;
 
 import android.app.ActionBar;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.webkit.WebView;
 
 import org.apache.cordova.CordovaActivity;
+import org.rpgm.apihandling.GPlusAPIActivity;
 import org.rpgm.apihandling.GPlusAPIHandler;
 import org.rpgm.filehandling.ContentExposure;
 
@@ -37,6 +37,8 @@ public class MainActivity extends CordovaActivity {
             View.SYSTEM_UI_FLAG_HIDE_NAVIGATION |
             View.SYSTEM_UI_FLAG_FULLSCREEN |
             View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY;
+
+    private static GPlusAPIActivity gPlusAPIActivity;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -57,12 +59,8 @@ public class MainActivity extends CordovaActivity {
         ContentExposure contentExposure = new ContentExposure();
         contentExposure.setStorageManager(this.getSystemService(STORAGE_SERVICE));
 
-        GPlusAPIHandler gPlusAPIHandler = new GPlusAPIHandler();
-
-        //initGPlusAPI();
-
         webView.addJavascriptInterface(contentExposure, "exposureInterface");
-        webView.addJavascriptInterface(gPlusAPIHandler, "gameInterface");
+        webView.addJavascriptInterface(new GPlusAPIHandler(), "gameInterface");
 
         // Set by <content src="index.html" /> in config.xml
         //loadUrl(launchUrl);
@@ -105,9 +103,11 @@ public class MainActivity extends CordovaActivity {
         setSystemUiVisibilityChangeListener();
     }
 
-    private void initGPlusAPI(){
-        Intent intent = new Intent(this, GPlusAPIHandler.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-        startActivity(intent);
+    public static void setAPIActivity(GPlusAPIActivity gactivity){
+        gPlusAPIActivity = gactivity;
+    }
+
+    public static GPlusAPIActivity getgPlusAPIActivity(){
+        return gPlusAPIActivity;
     }
 }

@@ -39,6 +39,9 @@ allprojects {
     repositories {
         mavenCentral();
         jcenter()
+        maven {
+            url "https://maven.google.com"
+        }
     }
 }
 
@@ -176,7 +179,7 @@ android {
       abortOnError false;
     }
 
-    compileSdkVersion 24
+    compileSdkVersion 26
     buildToolsVersion '25.0.3'
 
     if (Boolean.valueOf(cdvBuildMultipleApks)) {

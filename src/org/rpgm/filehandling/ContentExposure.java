@@ -11,7 +11,7 @@ import java.io.File;
 
 public class ContentExposure {
     private static StorageManager storageManager;
-    private static String obb = "main.38." + BuildConfig.APPLICATION_ID + ".obb";
+    private static String obb = "main." + BuildConfig.VERSION_CODE + "." + BuildConfig.APPLICATION_ID + ".obb";
     private static String fullOBBPath = Environment.getExternalStorageDirectory().getAbsolutePath() +
             File.separator + "Android/obb/" + BuildConfig.APPLICATION_ID + File.separator + obb;
 
