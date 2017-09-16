@@ -38,7 +38,7 @@ public class MainActivity extends CordovaActivity {
             View.SYSTEM_UI_FLAG_FULLSCREEN |
             View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY;
 
-    private static GPlusAPIActivity gPlusAPIActivity;
+    private static GPlusAPIActivity gPlusAPIActivity = null;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

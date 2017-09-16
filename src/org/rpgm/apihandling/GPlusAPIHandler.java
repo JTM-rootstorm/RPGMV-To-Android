@@ -6,6 +6,8 @@ public class GPlusAPIHandler {
 
     @android.webkit.JavascriptInterface
     public void showAchievementWindow(){
-        MainActivity.getgPlusAPIActivity().showAchievementWindow();
+        if(MainActivity.getgPlusAPIActivity() != null){
+            MainActivity.getgPlusAPIActivity().showAchievementWindow();
+        }
     }
 }
