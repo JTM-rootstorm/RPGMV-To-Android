@@ -60,7 +60,10 @@ public class MainActivity extends CordovaActivity {
         contentExposure.setStorageManager(this.getSystemService(STORAGE_SERVICE));
 
         webView.addJavascriptInterface(contentExposure, "exposureInterface");
-        webView.addJavascriptInterface(new GPlusAPIHandler(gPlusAPIActivity), "gameInterface");
+
+        if(gPlusAPIActivity != null){
+            webView.addJavascriptInterface(new GPlusAPIHandler(gPlusAPIActivity), "gameInterface");
+        }
 
         // Set by <content src="index.html" /> in config.xml
         //loadUrl(launchUrl);
