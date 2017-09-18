@@ -1,5 +1,6 @@
 package org.rpgm.filehandling;
 
+import android.content.Context;
 import android.os.Environment;
 import android.os.storage.OnObbStateChangeListener;
 import android.os.storage.StorageManager;
@@ -9,13 +10,24 @@ import org.rpgm.main.BuildConfig;
 
 import java.io.File;
 
-public class ContentExposure {
-    private static StorageManager storageManager;
-    private static String obb = "main." + BuildConfig.VERSION_CODE + "." + BuildConfig.APPLICATION_ID + ".obb";
-    private static String fullOBBPath = Environment.getExternalStorageDirectory().getAbsolutePath() +
-            File.separator + "Android/obb/" + BuildConfig.APPLICATION_ID + File.separator + obb;
+public class MVExternalStorageManager {
+    private StorageManager storageManager;
 
-    private File obbFile = new File(fullOBBPath);
+    private File obbFile;
+
+    private Context context;
+
+    public MVExternalStorageManager(Context c){
+        context = c;
+
+        final String obb = "main." + BuildConfig.VERSION_CODE + "." + BuildConfig.APPLICATION_ID
+                + ".obb";
+
+        final String fullOBBPath = Environment.getExternalStorageDirectory().getAbsolutePath() +
+                File.separator + "Android/obb/" + BuildConfig.APPLICATION_ID + File.separator + obb;
+
+        obbFile = new File(fullOBBPath);
+    }
 
     private OnObbStateChangeListener mListener = new OnObbStateChangeListener() {
         @Override
@@ -53,6 +65,11 @@ public class ContentExposure {
                 Log.e("MAIN= ", "NOT FOUND");
             }
         }
+    }
+
+    @android.webkit.JavascriptInterface
+    public String getFilesDir(){
+        return context.getExternalFilesDir(null).getAbsolutePath();
     }
 
     @android.webkit.JavascriptInterface

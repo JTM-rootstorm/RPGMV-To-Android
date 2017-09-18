@@ -28,7 +28,7 @@ import android.webkit.WebView;
 import org.apache.cordova.CordovaActivity;
 import org.rpgm.apihandling.GPlusAPIActivity;
 import org.rpgm.apihandling.GPlusAPIHandler;
-import org.rpgm.filehandling.ContentExposure;
+import org.rpgm.filehandling.MVExternalStorageManager;
 
 public class MainActivity extends CordovaActivity {
     private final int SYSTEM_UI_OPTIONS = View.SYSTEM_UI_FLAG_LAYOUT_STABLE |
@@ -56,10 +56,10 @@ public class MainActivity extends CordovaActivity {
 
         setIsFullscreen(true);
 
-        ContentExposure contentExposure = new ContentExposure();
-        contentExposure.setStorageManager(this.getSystemService(STORAGE_SERVICE));
+        MVExternalStorageManager mvExternalStorageManager = new MVExternalStorageManager(this.getApplicationContext());
+        mvExternalStorageManager.setStorageManager(this.getSystemService(STORAGE_SERVICE));
 
-        webView.addJavascriptInterface(contentExposure, "exposureInterface");
+        webView.addJavascriptInterface(mvExternalStorageManager, "exposureInterface");
 
         if(gPlusAPIActivity != null){
             webView.addJavascriptInterface(new GPlusAPIHandler(gPlusAPIActivity), "gameInterface");
