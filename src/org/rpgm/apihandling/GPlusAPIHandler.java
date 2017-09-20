@@ -12,4 +12,9 @@ public class GPlusAPIHandler {
     public void showAchievementWindow(){
         gPlusAPIActivity.showAchievementWindow();
     }
+
+    @android.webkit.JavascriptInterface
+    public void unlockAchievement(String achievementID){
+        gPlusAPIActivity.unlockAchievement(achievementID);
+    }
 }

@@ -39,4 +39,10 @@ public class GPlusAPIActivity extends BaseGameActivity {
             startActivityForResult(Games.Achievements.getAchievementsIntent(getApiClient()), 1);
         }
     }
+
+    public void unlockAchievement(String achievementID){
+        if(isSignedIn()){
+            Games.Achievements.unlock(getApiClient(), achievementID);
+        }
+    }
 }
