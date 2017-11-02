@@ -1,5 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="org.rpgm.main" version="1.0.0" xmlns="http://www.w3.org/ns/widgets">
+<widget id="io.cordova.main"
+    version="1.0.0"
+    xmlns="http://www.w3.org/ns/widgets">
     <feature name="Whitelist">
         <param name="android-package" value="org.apache.cordova.whitelist.WhitelistPlugin" />
         <param name="onload" value="true" />

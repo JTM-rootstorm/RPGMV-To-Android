@@ -17,10 +17,8 @@
        under the License.
 */
 
-
-import groovy.swing.SwingBuilder
-
 import java.util.regex.Pattern
+import groovy.swing.SwingBuilder
 
 String doEnsureValueExists(filePath, props, key) {
     if (props.get(key) == null) {

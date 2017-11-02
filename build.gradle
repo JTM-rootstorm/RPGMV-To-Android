@@ -30,23 +30,21 @@ buildscript {
     // http://tools.android.com/tech-docs/new-build-system/version-compatibility
     // and https://issues.apache.org/jira/browse/CB-8143
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.3.3'
+        classpath 'com.android.tools.build:gradle:3.0.0'
     }
 }
 
 // Allow plugins to declare Maven dependencies via build-extras.gradle.
 allprojects {
     repositories {
-        mavenCentral();
+        mavenCentral()
         jcenter()
-        maven {
-            url "https://maven.google.com"
-        }
+        google()
     }
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '3.3'
+    gradleVersion = '2.14.1'
 }
 
 // Configuration properties. Set these via environment variables, build-extras.gradle, or gradle.properties.
@@ -167,7 +165,7 @@ android {
     }
 
     defaultConfig {
-        //versionCode cdvVersionCode ?: new BigInteger("" + privateHelpers.extractIntFromManifest("versionCode"))
+        versionCode cdvVersionCode ?: new BigInteger("" + privateHelpers.extractIntFromManifest("versionCode"))
         applicationId privateHelpers.extractStringFromManifest("package")
 
         if (cdvMinSdkVersion != null) {
@@ -179,8 +177,8 @@ android {
       abortOnError false;
     }
 
-    compileSdkVersion 26
-    buildToolsVersion '25.0.3'
+    compileSdkVersion cdvCompileSdkVersion
+    buildToolsVersion "27.0.0"
 
     if (Boolean.valueOf(cdvBuildMultipleApks)) {
         productFlavors {
@@ -239,6 +237,9 @@ android {
             release {
                 signingConfig signingConfigs.release
             }
+            debug {}
+            releaseApp {}
+            releaseSdk {}
         }
         addSigningProps(cdvReleaseSigningPropertiesFile, signingConfigs.release)
     }
@@ -248,11 +249,10 @@ android {
 }
 
 dependencies {
-    compile fileTree(include: '*.jar', dir: 'libs')
+    compile fileTree(dir: 'libs', include: '*.jar')
     // SUB-PROJECT DEPENDENCIES START
-    compile project(':BaseGameUtils')
-    debugCompile project(path: 'CordovaLib', configuration: 'debug')
-    releaseCompile project(path: 'CordovaLib', configuration: 'release')
+    implementation project(":CordovaLib")
+    implementation project(":BaseGameUtils")
     // SUB-PROJECT DEPENDENCIES END
 }
 
